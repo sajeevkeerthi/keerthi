@@ -1,0 +1,235 @@
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[empreg]    Script Date: 09-04-2019 15:47:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[empreg](
+	[empid] [int] NOT NULL,
+	[name] [varchar](max) NULL,
+	[address] [varchar](max) NULL,
+	[phone] [varchar](50) NULL,
+	[dob] [date] NULL,
+	[occupation] [varchar](max) NULL,
+	[usertype] [varchar](50) NULL,
+	[unitname] [varchar](max) NULL,
+	[username] [varchar](max) NULL,
+	[password] [varchar](max) NULL,
+	[unitid] [varchar](50) NULL,
+	[photo] [varchar](50) NULL,
+ CONSTRAINT [PK_empreg] PRIMARY KEY CLUSTERED 
+(
+	[empid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[login]    Script Date: 09-04-2019 15:48:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[login](
+	[uname] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+	[usertype] [varchar](50) NULL,
+	[userid] [int] NOT NULL,
+ CONSTRAINT [PK_login] PRIMARY KEY CLUSTERED 
+(
+	[userid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[memberloan]    Script Date: 09-04-2019 15:48:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[memberloan](
+	[loanid] [int] NOT NULL,
+	[loanname] [varchar](max) NULL,
+	[loantype] [varchar](max) NULL,
+	[requiredamount] [int] NULL,
+	[pendingamount] [int] NULL,
+	[mid] [int] NULL,
+	[applydate] [date] NULL,
+	[lastdateofapply] [date] NULL,
+	[status] [varchar](max) NULL,
+ CONSTRAINT [PK_memberloan] PRIMARY KEY CLUSTERED 
+(
+	[loanid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[memreg]    Script Date: 09-04-2019 15:48:49 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[memreg](
+	[mid] [int] NOT NULL,
+	[name] [varchar](max) NULL,
+	[age] [varchar](max) NULL,
+	[dob] [date] NULL,
+	[address] [varchar](max) NULL,
+	[mobile] [int] NULL,
+	[unitid] [int] NULL,
+	[education] [varchar](max) NULL,
+	[occupation] [varchar](max) NULL,
+	[photo] [varchar](max) NULL,
+	[status] [varchar](50) NULL,
+ CONSTRAINT [PK_memreg] PRIMARY KEY CLUSTERED 
+(
+	[mid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[memreg]  WITH CHECK ADD FOREIGN KEY([unitid])
+REFERENCES [dbo].[unitreg] ([unitid])
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[product]    Script Date: 09-04-2019 15:49:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[product](
+	[pid] [int] NOT NULL,
+	[pname] [varchar](max) NULL,
+	[price] [varchar](max) NULL,
+	[qty] [varchar](max) NULL,
+	[photo] [varchar](max) NULL,
+ CONSTRAINT [PK_product] PRIMARY KEY CLUSTERED 
+(
+	[pid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[thrift]    Script Date: 09-04-2019 15:49:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[thrift](
+	[thriftid] [int] NOT NULL,
+	[unitid] [varchar](max) NULL,
+	[tdate] [date] NULL,
+	[tweek] [varchar](max) NULL,
+	[mid] [int] NULL,
+	[tamount] [int] NULL,
+	[status] [varchar](max) NULL,
+ CONSTRAINT [PK_thrift] PRIMARY KEY CLUSTERED 
+(
+	[thriftid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [kudumbashree]
+GO
+
+/****** Object:  Table [dbo].[unitreg]    Script Date: 09-04-2019 15:50:18 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[unitreg](
+	[unitid] [int] NOT NULL,
+	[unitname] [varchar](50) NULL,
+	[secratary] [varchar](max) NULL,
+	[president] [varchar](max) NULL,
+	[state] [varchar](max) NULL,
+	[noofmember] [int] NULL,
+	[bankname] [varchar](max) NULL,
+	[accountnumber] [varchar](max) NULL,
+ CONSTRAINT [PK_unitreg] PRIMARY KEY CLUSTERED 
+(
+	[unitid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
